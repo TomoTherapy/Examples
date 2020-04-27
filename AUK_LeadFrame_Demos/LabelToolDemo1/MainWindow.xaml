@@ -1,0 +1,45 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LabelToolDemo1"
+        xmlns:ImageListView="clr-namespace:DeepObjectDector.sub.control.ImageListView" 
+        xmlns:ZoomPanControl="clr-namespace:CanvasDraw.Control.ZoomPanControl" 
+        x:Class="LabelToolDemo1.MainWindow"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="800" Width="1300" Loaded="Window_Loaded">
+    <Window.Resources>
+        <!--<local:NewToBool x:Key="NewToBoolConverter"/>-->
+    </Window.Resources>
+    <Window.CommandBindings>
+
+    </Window.CommandBindings>
+    <Grid Background="#FFE8E8E8" KeyDown="Grid_KeyDown">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="202"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <ImageListView:ImageListView x:Name="IMG_LSTVIEW_UI" Margin="10,104,5,10"/>
+        <Border Margin="5,10,10,160" Background="White" Grid.Column="1">
+            <ZoomPanControl:ZoomAndPanControl x:Name="ZoomPanControl" MouseWheel="ZoomPanControl_MouseWheel" Background="#FF0B178F">
+                <Canvas x:Name="cv" Margin="1" HorizontalAlignment="Stretch" Background="White" />
+            </ZoomPanControl:ZoomAndPanControl>
+        </Border>
+        <Button x:Name="OK_button" Content="OK" HorizontalAlignment="Left" Margin="5,0,0,10" Width="158" FontFamily="Comic Sans MS" FontSize="24" FontWeight="Bold" Click="OK_button_Click" Height="51" VerticalAlignment="Bottom" Grid.Column="1"/>
+        <Button x:Name="NG_button" Content="NG" HorizontalAlignment="Left" Margin="168,0,0,10" Width="158" FontFamily="Comic Sans MS" FontSize="24" FontWeight="Bold" Click="NG_button_Click" Height="51" VerticalAlignment="Bottom" Grid.Column="1"/>
+        <!--ItemsSource="{Binding Path=Sets}"-->
+        <!--IsEnabled="{Binding ElementName=Sets_comboBox, Path=SelectedIndex, Converter={StaticResource NewToBoolConverter}}"-->
+        <Button x:Name="AddSet_button" Content="Add" HorizontalAlignment="Left" Margin="5,0,0,114" VerticalAlignment="Bottom" Width="75" FontFamily="Arial" Height="41" Click="AddSet_button_Click" Grid.Column="1" FontSize="20"/>
+        <StackPanel Name="SetItems_stackPanel" Height="40" Margin="5,0,10,69" VerticalAlignment="Bottom" Orientation="Horizontal" Background="White" Grid.Column="1" />
+        <CheckBox x:Name="KeepSets_checkBox" Content="Keep Sets" HorizontalAlignment="Left" Margin="86,0,0,125" VerticalAlignment="Bottom" FontFamily="Arial" FontSize="16" IsChecked="True" Grid.Column="1" Height="18" Width="94"/>
+        <StackPanel x:Name="KnownSets_stackPanel" Grid.Column="1" Height="41" Margin="190,0,10,114" VerticalAlignment="Bottom" Background="White" Orientation="Horizontal"/>
+        <ToolBar x:Name="toolBar" Height="30" Margin="10,10,5,0" VerticalAlignment="Top" Background="White">
+            <Button x:Name="New_button" Content="New" Height="26" VerticalAlignment="Top" Width="46" Margin="0,0,0,-1" FontFamily="Arial" Click="New_menuItem_Click" Background="White" BorderBrush="{x:Null}" FontWeight="Bold"/>
+            <Button x:Name="Save_button" Content="Save" Height="26" VerticalAlignment="Top" Width="46" Margin="0,0,0,-1" FontFamily="Arial" Click="Save_menuItem_Click" Background="White" BorderBrush="{x:Null}" FontWeight="Bold"/>
+            <Button x:Name="Load_button" Content="Load" Height="26" VerticalAlignment="Top" Width="46" Margin="0,0,0,-1" FontFamily="Arial" Click="Load_menuItem_Click" Background="White" BorderBrush="{x:Null}" FontWeight="Bold"/>
+        </ToolBar>
+        <TextBlock x:Name="textBlock" Height="20" Margin="10,45,10,0" TextWrapping="Wrap" Text="/" VerticalAlignment="Top" TextAlignment="Center" FontFamily="Arial" FontSize="16"/>
+
+    </Grid>
+</Window>

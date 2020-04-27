@@ -1,0 +1,43 @@
+﻿<Window x:Class="HorizontalListVeiw.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:loacl="clr-namespace:HorizontalListVeiw"
+        Title="MainWindow" Height="200" Width="700" Name="MainWnd" >
+    
+    <Window.Resources>
+        <loacl:MyListViewModel x:Key="MyListViewModel"/>
+    </Window.Resources>
+    
+    <Grid >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
+        <Border Grid.Row="0" BorderBrush="Black" BorderThickness="2">
+            <StackPanel Orientation="Horizontal">
+                <TextBox Text="{Binding ElementName=MainWnd, Path=TxtName}" Width="70" Height="30" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+                <Button Content="추가" Width="50" Height="30" Click="Button_Click" />
+            </StackPanel>
+        </Border>
+
+        <ListView DataContext="{StaticResource MyListViewModel}" ItemsSource="{Binding Path=MyList}"  Grid.Row="1" >
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Background="Transparent" Orientation="Horizontal"/>
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Border BorderBrush="Black" BorderThickness="2">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBox Text="{Binding TextName}" Width="70" Height="30" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+                            <Button Content="제거" Width="50" Height="30" 
+                                        Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type ListView}}, Path=DataContext.DeleteCommand}"
+                                        CommandParameter="{Binding}" />
+                        </StackPanel>
+                    </Border>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+</Window>

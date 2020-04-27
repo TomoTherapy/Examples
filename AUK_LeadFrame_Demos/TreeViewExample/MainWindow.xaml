@@ -1,0 +1,26 @@
+﻿<Window x:Class="TreeViewExample.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TreeViewExample"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="800" Width="800">
+    <Window.Resources>
+        <local:EmployeeTypes x:Key="theData"/>
+        <DataTemplate x:Key="level3">
+            <TextBlock Text="{Binding Path=Name}"/>
+        </DataTemplate>
+        <HierarchicalDataTemplate x:Key="level2" ItemsSource="{Binding ManagedEmployees}" ItemTemplate="{StaticResource level3}">
+            <TextBlock Text="{Binding Name}"/>
+        </HierarchicalDataTemplate>
+        <HierarchicalDataTemplate x:Key="level1" ItemsSource="{Binding Employees}" ItemTemplate="{StaticResource level2}">
+            <TextBlock Text="{Binding Description}"/>
+        </HierarchicalDataTemplate>                          
+    </Window.Resources>
+    <Grid Background="#FFECECEC">
+        <TreeView x:Name="treeView" Margin="10,52,432,10" Background="White" ItemTemplate="{StaticResource level1}" ItemsSource="{StaticResource theData}" FontSize="22" FontFamily="DejaVu Sans"/>
+        <Grid HorizontalAlignment="Left" Height="598" Margin="389,88,0,0" VerticalAlignment="Top" Width="360" Background="White"/>
+
+    </Grid>
+</Window>

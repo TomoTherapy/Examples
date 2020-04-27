@@ -1,0 +1,26 @@
+﻿<Window x:Class="LabelToolDemo1.NewItem"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LabelToolDemo1"
+        mc:Ignorable="d"
+        Title="New Item" Height="121.083" Width="218.833"
+        WindowStyle="None"
+        WindowState="Normal"
+        ResizeMode="NoResize" MouseDown="Window_MouseDown"
+        WindowStartupLocation="CenterScreen">
+    <Grid>
+        <TextBox x:Name="NewItemName_textBox" HorizontalAlignment="Left" Height="26" Margin="10,43,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="117" FontFamily="Arial" FontSize="16" Padding="0,3,0,0" MaxLength="10" KeyUp="NewItemName_textBox_KeyUp"/>
+        <TextBox x:Name="Shortcut_textBox" HorizontalAlignment="Left" Height="26" Margin="132,43,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="76" MaxLength="1" FontFamily="Arial" FontSize="16" Padding="0,3,0,0" KeyUp="Shortcut_textBox_KeyUp"/>
+        <Button x:Name="OK_button" Content="OK" HorizontalAlignment="Left" Margin="10,84,0,0" VerticalAlignment="Top" Width="94" Click="OK_button_Click" FontFamily="Arial" FontSize="16" Background="#FFE0E0E0" BorderBrush="#FFC9C9C9" Height="27"/>
+        <Button x:Name="Cancel_button" Content="Cancel" HorizontalAlignment="Left" Margin="115,84,0,0" VerticalAlignment="Top" Width="93" Click="Cancel_button_Click" FontFamily="Arial" FontSize="16" Background="#FFE0E0E0" BorderBrush="#FFC9C9C9" Height="27"/>
+        <Label x:Name="label" Content="Item Name" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontFamily="Arial" FontSize="16"/>
+        <Label x:Name="label_Copy" Content="Shortcut" HorizontalAlignment="Left" Margin="141,10,0,0" VerticalAlignment="Top" FontFamily="Arial" FontSize="16"/>
+        <Rectangle Fill="#FFF4F4F5" Height="1" Margin="0" Stroke="#FFCBCBCB" VerticalAlignment="Top"/>
+        <Rectangle Fill="#FFF4F4F5" Stroke="#FFCBCBCB" Height="1" VerticalAlignment="Bottom"/>
+        <Rectangle Fill="#FFF4F4F5" Stroke="#FFCBCBCB" Margin="0" HorizontalAlignment="Left"/>
+        <Rectangle Fill="#FFF4F4F5" Stroke="#FFCBCBCB" Margin="0" HorizontalAlignment="Right"/>
+
+    </Grid>
+</Window>
