@@ -1,0 +1,25 @@
+﻿<Window x:Class="ControlTemplate.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ControlTemplate"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Button x:Name="button" Content="Button" HorizontalAlignment="Left" Margin="87,107,0,0" VerticalAlignment="Top" Width="128" Height="46">
+            <Button.Template>
+                <ControlTemplate TargetType="Button">
+                    <Grid>
+                        <Ellipse Fill="Orange" Stroke="Red" StrokeThickness="3" />
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Grid>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+        <Button x:Name="button1" HorizontalAlignment="Left" Margin="277,56,0,0" VerticalAlignment="Top" Width="147" Height="58" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" >
+            <Ellipse Fill="Orange" Stroke="Red" Width="100" Height="50"/>
+        </Button>
+
+    </Grid>
+</Window>

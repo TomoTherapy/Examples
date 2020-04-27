@@ -1,0 +1,24 @@
+﻿<Window x:Class="DataGridAndDataTemplate.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DataGridAndDataTemplate"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="600.84">
+    <Window.Resources>
+        <local:DataRowViewConverter x:Key="drvc"/>
+        <DataTemplate x:Key="ATemplate">
+            <RadioButton DataContext="{Binding RelativeSource={RelativeSource AncestorType=DataGridCell}, Converter={StaticResource drvc}}"
+                         Content="{Binding Path=Name}" GroupName="{Binding Path=GroupName}" IsChecked="{Binding Path=IsSelected}"/>
+        </DataTemplate>
+        <DataTemplate x:Key="BTemplate">
+            <CheckBox DataContext="{Binding RelativeSource={RelativeSource AncestorType=DataGridCell}, Converter={StaticResource drvc}}"
+                      Content="{Binding Path=FullName}" IsChecked="{Binding Path=IsChecked}"/>
+        </DataTemplate>
+    </Window.Resources>
+    <Grid>
+        <DataGrid AutoGenerateColumns="True" ItemsSource="{Binding Items}" x:Name="dataGrid" Height="284" Margin="10,10,10,0" 
+                  VerticalAlignment="Top" AutoGeneratingColumn="DataGrid_AutoGeneratingColumn" IsReadOnly="True"/>
+    </Grid>
+</Window>
