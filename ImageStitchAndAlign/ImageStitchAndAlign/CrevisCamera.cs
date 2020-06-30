@@ -640,8 +640,8 @@ namespace Crevis.Devices
                         Thread.Sleep(50);
                     }
 
-                    //status = _vfg.GrabImageAsync(cam.HDevice, cam.pImage, (uint)cam.BufferSize, 0xFFFFFFFF);
-                    status = _vfg.GrabImage(cam.HDevice, cam.pImage, (uint)cam.BufferSize);
+                    status = _vfg.GrabImageAsync(cam.HDevice, cam.pImage, (uint)cam.BufferSize, 0xFFFFFFFF);
+                    //status = _vfg.GrabImage(cam.HDevice, cam.pImage, (uint)cam.BufferSize);
 
                     if (status != VirtualFG40Library.VirtualFG40Library.MCAM_ERR_SUCCESS)
                     {

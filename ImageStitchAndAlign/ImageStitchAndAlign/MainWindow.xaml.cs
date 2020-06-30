@@ -30,6 +30,7 @@ namespace ImageStitchAndAlign
         private ImageSource _finalSource;
         private List<Bitmap> bmpList;
         private Bitmap MergedBitmap;
+        CogPMRedLineTool red;
 
         public ImageSource FinalSource { get => _finalSource; set { _finalSource = value; RaisePropertyChanged(nameof(FinalSource)); } }
         public int CamNum { get => _camNum; set { _camNum = value; RaisePropertyChanged(nameof(CamNum)); } }
@@ -44,14 +45,18 @@ namespace ImageStitchAndAlign
 
             DataContext = this;
 
+            red = CogSerializer.LoadObjectFromFile(@"C:\Users\crevis\Desktop\redline.vpp") as CogPMRedLineTool;
+
             camera = new Crevis.Devices.CrevisCamera();
-            camera.UpdateDevice();
+            camera.Open();
+            camera.AcqStart();
+            //camera.UpdateDevice();
             CamNum = camera.CameraList.Count();
 
             bmpList = new List<Bitmap>();
             //Process();
 
-            this.Close();
+            //this.Close();
         }
 
         private void Merge()
@@ -152,7 +157,7 @@ namespace ImageStitchAndAlign
                 //mergeBitmap.SetGrayScale();
             }
 
-            //mergeBitmap.Save(@"D:\DDDDDD.bmp", System.Drawing.Imaging.ImageFormat.Bmp);
+            mergeBitmap.Save(@"C:\Users\crevis\Desktop\DDDDDD.bmp", System.Drawing.Imaging.ImageFormat.Bmp);
             //Save
 
             MergedBitmap = mergeBitmap;
@@ -160,10 +165,17 @@ namespace ImageStitchAndAlign
 
         private void Process()
         {
-            CogPMRedLineTool red = CogSerializer.LoadObjectFromFile(@"") as CogPMRedLineTool;
 
-            red.InputImage = new CogImage8Grey(new Bitmap(MergedBitmap));
+            //Stopwatch watch = new Stopwatch();
+            //watch.Start();
+            red.InputImage = new CogImage8Grey(MergedBitmap);
+            
             red.Run();
+
+            if (red.Results.Count == 0) MessageBox.Show("Jesus!!");
+            //watch.Stop();
+            //WatchTime = (int)watch.ElapsedMilliseconds;
+
         }
 
 
@@ -186,10 +198,15 @@ namespace ImageStitchAndAlign
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            camera.GrabLineTrg();
-
             Stopwatch watch = new Stopwatch();
             watch.Start();
+            camera.GrabLineTrg(0);
+            camera.GrabLineTrg(1);
+            camera.GrabLineTrg(2);
+            camera.GrabLineTrg(3);
+            camera.GrabLineTrg(4);
+            camera.GrabLineTrg(5);
+
 
             foreach (var cam in camera.CameraList)
                 bmpList.Add(cam.BitmapImage);
@@ -198,7 +215,7 @@ namespace ImageStitchAndAlign
             Process();
 
             watch.Stop();
-
+            WatchTime = (int)watch.ElapsedMilliseconds;
         }
     }
 }
