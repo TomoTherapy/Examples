@@ -33,12 +33,16 @@ namespace ImageStitchAndAlign
 
         public ImageSource FinalSource { get => _finalSource; set { _finalSource = value; RaisePropertyChanged(nameof(FinalSource)); } }
         public int CamNum { get => _camNum; set { _camNum = value; RaisePropertyChanged(nameof(CamNum)); } }
+        public int WatchTime { get => _watchTime; set { _watchTime = value; RaisePropertyChanged(nameof(WatchTime)); } }
         public Crevis.Devices.CrevisCamera camera;
         private int _camNum;
+        private int _watchTime;
 
         public MainWindow()
         {
             InitializeComponent();
+
+            DataContext = this;
 
             camera = new Crevis.Devices.CrevisCamera();
             camera.UpdateDevice();
@@ -184,11 +188,17 @@ namespace ImageStitchAndAlign
         {
             camera.GrabLineTrg();
 
+            Stopwatch watch = new Stopwatch();
+            watch.Start();
+
             foreach (var cam in camera.CameraList)
                 bmpList.Add(cam.BitmapImage);
 
             Merge();
             Process();
+
+            watch.Stop();
+
         }
     }
 }

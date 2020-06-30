@@ -639,21 +639,9 @@ namespace Crevis.Devices
                         //재연결 코드는 스레드로 돌아가기에 여기서 구현할 필요는 없음
                         Thread.Sleep(50);
                     }
-                    //status = _vfg.SetCmdReg(cam.HDevice, VirtualFG40Library.VirtualFG40Library.MCAM_TRIGGER_SOFTWARE);
-                    //if (status != VirtualFG40Library.VirtualFG40Library.MCAM_ERR_SUCCESS)
-                    //{
-                    //    for (int i = 0; i < 20; i++)
-                    //    {
-                    //        status = _vfg.SetCmdReg(cam.HDevice, VirtualFG40Library.VirtualFG40Library.MCAM_TRIGGER_SOFTWARE);
-                    //        if (status == VirtualFG40Library.VirtualFG40Library.MCAM_ERR_SUCCESS)
-                    //        {
-                    //            break;
-                    //        }
-                    //        Thread.Sleep(100);
-                    //    }
-                    //}
-                    status = _vfg.GrabImageAsync(cam.HDevice, cam.pImage, (uint)cam.BufferSize, 0xFFFFFFFF);
-                    //status = _vfg.GrabImage(cam.HDevice, cam.pImage, (uint)cam.BufferSize);
+
+                    //status = _vfg.GrabImageAsync(cam.HDevice, cam.pImage, (uint)cam.BufferSize, 0xFFFFFFFF);
+                    status = _vfg.GrabImage(cam.HDevice, cam.pImage, (uint)cam.BufferSize);
 
                     if (status != VirtualFG40Library.VirtualFG40Library.MCAM_ERR_SUCCESS)
                     {
