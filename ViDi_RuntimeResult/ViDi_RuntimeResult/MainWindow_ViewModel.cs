@@ -78,7 +78,8 @@ namespace ViDi_RuntimeResult
                     {
                         try
                         {
-                            ViDi2.VisionPro.Image image = new ViDi2.VisionPro.Image(new CogImage8Grey(bitmap));
+                            //ViDi2.VisionPro.Image image = new ViDi2.VisionPro.Image(new CogImage8Grey(bitmap));
+                            ViDi2.IImage image = new ViDi2.FormsImage(bitmap);
                             ViDi2.ISample sample = m_Stream.Process(image);
 
                             foreach (var marking in sample.Markings)
@@ -88,7 +89,8 @@ namespace ViDi_RuntimeResult
                                     #region VisionPro CogRecordDisplay에 ViDi검사 결과 변환하여 표시하기
                                     //CogRecord 생성
                                     CogRecord record = new CogRecord();
-                                    record.Content = image.InternalImage;
+                                    //record.Content = image.InternalImage;
+                                    record.Content = image.Bitmap;
 
                                     //ViDi 검사결과를 VisionPro Record로 변환
                                     CogGraphicCollection gc = new CogGraphicCollection();

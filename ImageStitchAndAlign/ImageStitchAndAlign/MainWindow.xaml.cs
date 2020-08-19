@@ -45,18 +45,14 @@ namespace ImageStitchAndAlign
 
             DataContext = this;
 
-            red = CogSerializer.LoadObjectFromFile(@"C:\Users\crevis\Desktop\redline.vpp") as CogPMRedLineTool;
+            red = CogSerializer.LoadObjectFromFile(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"\redline.vpp") as CogPMRedLineTool;
 
             camera = new Crevis.Devices.CrevisCamera();
             camera.Open();
             camera.AcqStart();
-            //camera.UpdateDevice();
             CamNum = camera.CameraList.Count();
 
             bmpList = new List<Bitmap>();
-            //Process();
-
-            //this.Close();
         }
 
         private void Merge()

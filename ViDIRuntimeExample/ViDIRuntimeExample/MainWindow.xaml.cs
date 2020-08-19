@@ -34,11 +34,11 @@ namespace ViDIRuntimeExample
 
             m_Control = new ViDi2.Runtime.Local.Control();
 
-            m_Control.Workspaces.Add("jesus", @"C:\Users\jkhong\Desktop\QQQ.vrws");
+            m_Control.Workspaces.Add("jesus", @"C:\Users\jkhong\Desktop\IDontKnow3.vrws");
             m_Workspace = m_Control.Workspaces.First();
             m_Stream = m_Workspace.Streams.First();
 
-            using (IImage image = new ViDi2.VisionPro.Image(new CogImage24PlanarColor(new Bitmap(@"C:\Users\jkhong\Desktop\121K-2.bmp"))))
+            using (IImage image = new ViDi2.VisionPro.Image(new CogImage24PlanarColor(new Bitmap(@"C:\Users\jkhong\Desktop\라벨.bmp"))))
             {
                 ISample sample = m_Stream.Process(image);
 
@@ -78,6 +78,8 @@ namespace ViDIRuntimeExample
             ms.Seek(0, SeekOrigin.Begin);
             image.StreamSource = ms;
             image.EndInit();
+            image.Freeze();
+
             return image;
         }
     }
