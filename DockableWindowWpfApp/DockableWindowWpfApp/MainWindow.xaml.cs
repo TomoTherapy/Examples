@@ -13,30 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace SeparateCamExample
+namespace DockableWindowWpfApp
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
     {
-        Crevis.Devices.CrevisCamera camera;
         public MainWindow()
         {
             InitializeComponent();
-
-            camera = new Crevis.Devices.CrevisCamera();
-            camera.Open(1);
-            camera.AcqStart();
-
-            int i = camera.CameraList.Count;
-
-            textBox.Text = i.ToString();
-        }
-
-        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            camera.Close();
         }
     }
 }

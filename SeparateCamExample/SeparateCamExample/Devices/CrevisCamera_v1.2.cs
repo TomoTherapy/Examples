@@ -274,11 +274,6 @@ namespace Crevis.Devices
 
                 TempList[i].IsOpen = true;
 
-                //bool isOpen = false;
-                //status = _vfg.IsOpenDevice(i, ref isOpen);
-                //if (status != VirtualFG40Library.VirtualFG40Library.MCAM_ERR_SUCCESS) throw new _CamException();
-                //if (!isOpen) continue;
-
                 //홍준기 추가 DeviceEnum
                 TempList[i].DeviceEnum = (uint)TempList[i].HDevice;
 
@@ -331,19 +326,19 @@ namespace Crevis.Devices
                 TempList[i].BitmapImage = bitmap.Clone() as Bitmap;
             }
 
-            List<Camera> TempTemp = TempList.OrderBy(a => a.UserID).ToList();
+            List<Camera> TempList2 = TempList.OrderBy(a => a.UserID).ToList();
 
-            for (int i = TempTemp.Count; i > 0; i--)
+            for (int i = TempList2.Count; i > 0; i--)
             {
-                if (!TempTemp[i - 1].IsOpen)
+                if (!TempList2[i - 1].IsOpen)
                 {
-                    TempTemp.RemoveAt(i - 1);
+                    TempList2.RemoveAt(i - 1);
                 }
             }
 
             for (int i = 0; i < num; i++)
             {
-                CameraList.Add(TempTemp[i]);
+                CameraList.Add(TempList2[i]);
             }
 
             foreach (var t in TempList)
@@ -354,7 +349,7 @@ namespace Crevis.Devices
                 t.IsOpen = false;
             }
             TempList = null;
-            TempTemp = null;
+            TempList2 = null;
 
             for (int i = 0; i < CameraList.Count; i++)
             {
