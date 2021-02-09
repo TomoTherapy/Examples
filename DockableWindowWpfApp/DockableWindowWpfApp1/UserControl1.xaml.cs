@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DockableWindowWpfApp1.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,15 +17,20 @@ using System.Windows.Shapes;
 namespace DockableWindowWpfApp1
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for UserControl1.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class UserControl1 : UserControl
     {
-        public MainWindow()
+        public UserControl1()
         {
             InitializeComponent();
 
-            GRID.Children.Add(new UserControl1());
+            DataContext = new UserControl1_ViewModel();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            (DataContext as UserControl1_ViewModel).Button_Click();
         }
     }
 }
