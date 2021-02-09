@@ -1,0 +1,15 @@
+﻿<UserControl x:Class="DockableWindowWpfApp1.UserControl1"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:DockableWindowWpfApp1"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid Background="#FFD5FF7A">
+        <Button x:Name="button" Content="Button" HorizontalAlignment="Left" Height="75" Margin="129,82,0,0" VerticalAlignment="Top" Width="196" Click="Button_Click"/>
+        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="66" Margin="214,205,0,0" TextWrapping="Wrap" Text="{Binding Text1}" VerticalAlignment="Top" Width="277"/>
+        <TextBox x:Name="textBox_Copy" HorizontalAlignment="Left" Height="66" Margin="214,292,0,0" TextWrapping="Wrap" Text="{Binding Text2}" VerticalAlignment="Top" Width="277"/>
+
+    </Grid>
+</UserControl>
