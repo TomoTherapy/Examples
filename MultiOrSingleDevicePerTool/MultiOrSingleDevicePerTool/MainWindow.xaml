@@ -1,0 +1,16 @@
+﻿<Window x:Class="MultiOrSingleDevicePerTool.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MultiOrSingleDevicePerTool"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Button x:Name="Single" Content="Single" HorizontalAlignment="Left" Height="63" Margin="39,62,0,0" VerticalAlignment="Top" Width="183" Click="Single_Click"/>
+        <Button x:Name="Multi" Content="Multi" HorizontalAlignment="Left" Height="63" Margin="267,62,0,0" VerticalAlignment="Top" Width="190" Click="Multi_Click"/>
+        <Button x:Name="Process" Content="Process" HorizontalAlignment="Left" Height="57" Margin="267,235,0,0" VerticalAlignment="Top" Width="177" Click="Process_Click"/>
+        <Button x:Name="Load" Content="Load" HorizontalAlignment="Left" Height="72" Margin="39,181,0,0" VerticalAlignment="Top" Width="183" Click="Load_Click"/>
+
+    </Grid>
+</Window>
