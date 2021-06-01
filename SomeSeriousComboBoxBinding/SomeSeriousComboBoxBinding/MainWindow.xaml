@@ -1,0 +1,21 @@
+﻿<Window x:Class="SomeSeriousComboBoxBinding.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SomeSeriousComboBoxBinding"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <ComboBox x:Name="comboBoxX" HorizontalAlignment="Left" Margin="116,128,0,0" VerticalAlignment="Top" Width="120" Height="34" VerticalContentAlignment="Center"
+                  ItemsSource="{Binding ComboXItems}" SelectedItem="{Binding ComboX}" DropDownClosed="ComboBoxX_DropDownClosed" Style="{StaticResource ComboBoxFlatStyle}"/>
+        <ComboBox x:Name="comboBoxY" HorizontalAlignment="Left" Margin="241,128,0,0" VerticalAlignment="Top" Width="120" Height="34" VerticalContentAlignment="Center"
+                  ItemsSource="{Binding ComboYItems}" SelectedItem="{Binding ComboY}" DropDownClosed="ComboBoxY_DropDownClosed" Style="{StaticResource ComboBoxFlatStyle}"/>
+        <ComboBox x:Name="comboBoxMode" HorizontalAlignment="Left" Margin="422,128,0,0" VerticalAlignment="Top" Width="120" Height="34" VerticalContentAlignment="Center"
+                  ItemsSource="{Binding ComboModeItems}" SelectedItem="{Binding Path=Mode}" DropDownClosed="ComboBoxMode_DropDownClosed" Style="{StaticResource ComboBoxFlatStyle}"/>
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="144,96,0,0" TextWrapping="Wrap" Text="X Value" VerticalAlignment="Top" FontSize="20" FontFamily="Arial"/>
+        <TextBlock x:Name="textBlock_Copy" HorizontalAlignment="Left" Margin="271,96,0,0" TextWrapping="Wrap" Text="Y Value" VerticalAlignment="Top" FontSize="20" FontFamily="Arial"/>
+        <TextBlock x:Name="textBlock_Copy1" HorizontalAlignment="Left" Margin="458,96,0,0" TextWrapping="Wrap" Text="Mode" VerticalAlignment="Top" FontSize="20" FontFamily="Arial"/>
+
+    </Grid>
+</Window>
